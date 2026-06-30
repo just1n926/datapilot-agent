@@ -1,0 +1,16 @@
+services:
+  datapilot:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATAPILOT_MODE: ${DATAPILOT_MODE:-demo}
+      DATAPILOT_MODEL: ${DATAPILOT_MODEL:-gpt-5.4-mini}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_AGENTS_TRACE_INCLUDE_SENSITIVE_DATA: "0"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+

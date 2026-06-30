@@ -1,0 +1,5 @@
+{"id":"region-performance","question":"按地区分析收入、利润和利润率","expected_columns":["region","revenue","profit","margin_pct"],"expected_chart":"bar"}
+{"id":"monthly-trend","question":"分析月度收入和利润趋势","expected_columns":["month","revenue","profit","margin_pct"],"expected_chart":"line"}
+{"id":"product-performance","question":"按产品分析收入、利润和利润率","expected_columns":["product","revenue","profit","margin_pct"],"expected_chart":"bar"}
+{"id":"revenue-anomaly","question":"找出收入异常订单","expected_columns":["order_id","revenue","z_score"],"expected_chart":"bar"}
+

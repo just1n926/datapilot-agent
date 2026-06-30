@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5f7" />
+    <title>DataPilot · 数据分析 Agent</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav-shell" aria-label="主导航">
+        <a class="brand" href="/" aria-label="DataPilot 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+          <span>DataPilot</span>
+        </a>
+        <div class="nav-center" aria-hidden="true">
+          <span class="active">分析工作台</span>
+          <span>数据安全</span>
+          <span>Agent 能力</span>
+        </div>
+        <div class="health"><span id="health-dot" class="dot"></span><span id="engine">连接中</span></div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="hero-badge"><span></span>本地、安全、可复核</div>
+          <h1>你的数据，<br /><span>现在会回答问题了。</span></h1>
+          <p>上传 Excel 或 CSV，直接用自然语言提问。DataPilot 会理解字段、生成只读 SQL，并将结论整理成清晰的图表和数据表。</p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+          <div class="mini-card mini-card-main">
+            <div class="mini-card-head"><span>收入趋势</span><small>+18.4%</small></div>
+            <div class="mini-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="mini-card mini-card-float">
+            <span class="spark"></span>
+            <div><strong>分析完成</strong><small>已生成 4 条洞察</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-grid" aria-label="数据分析工作台">
+        <aside class="panel sidebar">
+          <div class="panel-title">
+            <span class="step">1</span>
+            <div><h2>选择数据</h2><p>上传或选择一个数据集</p></div>
+          </div>
+          <label class="upload-zone" for="file-input">
+            <input id="file-input" type="file" accept=".csv,.xlsx,.xlsm" hidden />
+            <span class="upload-icon" aria-hidden="true"><i></i></span>
+            <strong>上传 Excel 或 CSV</strong>
+            <small>点击选择文件，最大 20 MB</small>
+          </label>
+          <p id="upload-message" class="message" aria-live="polite"></p>
+
+          <label for="dataset-select">数据集</label>
+          <div class="select-wrap"><select id="dataset-select"></select></div>
+          <label for="table-select">数据表 / Sheet</label>
+          <div class="select-wrap"><select id="table-select"></select></div>
+
+          <div id="dataset-meta" class="dataset-meta"></div>
+          <div id="columns" class="columns"></div>
+
+          <div class="security-note">
+            <span class="lock-icon" aria-hidden="true"></span>
+            <div><strong>只读安全模式</strong><p>仅允许 SELECT / WITH，不会修改原始数据。</p></div>
+          </div>
+        </aside>
+
+        <section class="workspace">
+          <form id="analysis-form" class="panel ask-panel">
+            <div class="panel-title">
+              <span class="step">2</span>
+              <div><h2>想了解什么？</h2><p>像问同事一样描述你的业务问题</p></div>
+            </div>
+            <div class="question-box">
+              <textarea id="question" rows="3" required>按地区分析收入、利润和利润率，找出表现最好的地区</textarea>
+              <button id="analyze-button" class="primary-button" type="submit">
+                <span>开始分析</span><span class="arrow">→</span>
+              </button>
+            </div>
+            <div class="suggestions" aria-label="问题示例">
+              <span>试试</span>
+              <button type="button" data-question="按月份分析收入和利润趋势，指出最近一个月的变化">月度趋势</button>
+              <button type="button" data-question="按产品分析收入、利润和利润率">产品表现</button>
+              <button type="button" data-question="找出收入异常的订单并按异常程度排序">异常订单</button>
+              <button type="button" data-question="总结数据集的核心经营指标">经营概览</button>
+            </div>
+          </form>
+
+          <section class="panel result-panel">
+            <div class="panel-title result-heading">
+              <div><span class="step">3</span><div><h2>分析结果</h2><p>结论、图表和完整数据</p></div></div>
+              <span id="status" class="status idle"><i></i>待命</span>
+            </div>
+            <div id="empty-state" class="empty-state">
+              <div class="empty-visual">
+                <span class="bubble bubble-one"></span>
+                <span class="bubble bubble-two"></span>
+                <div class="signal"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <h3>准备好开始分析</h3>
+              <p>选择数据并提出问题，Agent 会在这里呈现结果。</p>
+            </div>
+            <div id="result" class="result hidden"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <footer><span>DataPilot</span><span>只读数据分析 Agent · 文件仅在当前服务进程中处理</span></footer>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

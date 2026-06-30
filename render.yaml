@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: datapilot-agent
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATAPILOT_MODE
+        value: demo
+      - key: DATAPILOT_ALLOW_UPLOADS
+        value: "false"
+      - key: OPENAI_AGENTS_TRACE_INCLUDE_SENSITIVE_DATA
+        value: "0"
