@@ -7,6 +7,8 @@ services:
     envVars:
       - key: DATAPILOT_MODE
         value: demo
+      - key: DATAPILOT_DEMO_FILE
+        value: /app/sample_data/sales_demo.xlsx
       - key: DATAPILOT_ALLOW_UPLOADS
         value: "false"
       - key: OPENAI_AGENTS_TRACE_INCLUDE_SENSITIVE_DATA

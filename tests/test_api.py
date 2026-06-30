@@ -1,5 +1,6 @@
 import time
 import unittest
+from pathlib import Path
 
 from fastapi.testclient import TestClient
 
@@ -56,3 +57,12 @@ class ApiTests(unittest.TestCase):
             )
         self.assertFalse(health.json()["uploads_enabled"])
         self.assertEqual(upload.status_code, 403)
+
+    def test_configured_demo_file_is_loaded(self) -> None:
+        demo_file = Path(__file__).parents[1] / "sample_data" / "sales_demo.xlsx"
+        app = create_app(Settings(mode="demo", demo_file=demo_file, allow_uploads=False))
+        with TestClient(app) as client:
+            health = client.get("/health").json()
+            datasets = client.get("/api/datasets").json()
+        self.assertEqual(health["datasets"], 1)
+        self.assertEqual(datasets[0]["filename"], "sales_demo.xlsx")
