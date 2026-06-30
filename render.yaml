@@ -3,6 +3,7 @@ services:
     name: datapilot-agent
     runtime: docker
     plan: free
+    autoDeployTrigger: checksPass
     healthCheckPath: /health
     envVars:
       - key: DATAPILOT_MODE
