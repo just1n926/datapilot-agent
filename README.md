@@ -1,5 +1,8 @@
 # DataPilot
 
+[![CI](https://github.com/just1n926/datapilot-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/just1n926/datapilot-agent/actions/workflows/ci.yml)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/just1n926/datapilot-agent)
+
 DataPilot 是一个面向 Excel/CSV 的只读数据分析 Agent。用户上传表格并提出业务问题，Agent 自动理解字段、生成受限 SQL、执行统计分析，再返回可复核的结果表、图表与关键结论。
 
 它解决的是高频实际问题：业务人员不需要手写 SQL 或 Pandas，也能快速完成销售拆解、趋势分析、产品对比和异常检测。
@@ -62,6 +65,8 @@ docker compose up --build
 ## 公网演示部署
 
 仓库包含 `render.yaml` 和 `Dockerfile`，可以在 Render 上直接创建 Blueprint。公开演示默认使用离线分析引擎并关闭文件上传，只展示内置样例，避免陌生人向服务上传数据。
+
+点击上方 **Deploy to Render** 按钮可以直接进入 Blueprint 创建页面。
 
 1. 将本项目推送到 GitHub。
 2. 登录 Render，选择 **New → Blueprint**。
